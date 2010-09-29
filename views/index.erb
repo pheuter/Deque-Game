@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>The Deque Game</title>
+  
+  <!-- Make it look good on the iPhone (: -->
+  <meta name="viewport" content="width=device-width">
+  
+  <link rel="stylesheet" href="stylesheets/master.css">
+  <link rel="stylesheet" href="stylesheets/buttons.css">
+  <link rel="stylesheet" href="stylesheets/progress.css">
+  <link href='http://fonts.googleapis.com/css?family=Philosopher&subset=latin' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie&subset=latin' rel='stylesheet' type='text/css'>
+  
+  <script src="http://code.jquery.com/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="javascripts/progress.js" type="text/javascript" charset="utf-8"></script>
+  <script src="javascripts/game.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+  
+  <div id="container">
+    
+    <div class="content">
+      <h1><a href="index.html" title="The Deque Game">The Deque Game</a></h1>
+    </div>
+    
+    <!--
+      Designed, styled and coded by Ivan Vanderbyl
+      http://dribbble.com/players/ivan
+      If you use this, please give credit where due, and send me a screenshot or link
+
+      Copyright (c) 2010 Ivan Vanderbyl
+      Originally found at http://ivan.ly/ui
+
+      Permission is hereby granted, free of charge, to any person obtaining a copy
+      of this software and associated documentation files (the "Software"), to deal
+      in the Software without restriction, including without limitation the rights
+      to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+      copies of the Software, and to permit persons to whom the Software is
+      furnished to do so, subject to the following conditions:
+
+      The above copyright notice and this permission notice shall be included in
+      all copies or substantial portions of the Software.
+
+      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+      FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+      AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+      LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+      THE SOFTWARE.
+    -->
+    
+    <!-- Progress bar -->
+    <div id="progress_bar" class="ui-progress-bar ui-container">
+      <div class="ui-progress" style="width: 100%;">
+        <span class="ui-label" style="display:none;">Loading game <b class="value">100%</b></span>
+      </div>
+    </div>
+    <!-- /Progress bar -->
+    
+    <div class="content" id="game" style="display: none;">
+      <h1 style="font-family: 'Philosopher', arial, serif;" id="request"></h1>
+      <hr/>
+      <a id="push-top" style="font-size:12px;" href="#" data-icon="↓" class="button green back" onclick="push('top');">Push</a>
+  		<a id="pop-top" style="font-size:12px;" href="#" data-icon="↑" class="button pink back" onclick="pop('top');">Pop</a>
+  		<br/>
+  		<input style="margin-left:58px;font-family: 'Reenie Beanie', arial, serif;font-size: 25px;width: 20px;height:20px;" id="top-input" type="text">
+  		<br/>
+      <textarea style="margin-left:60px;background:transparent;border:none;font-family: 'Reenie Beanie', arial, serif;font-size: 40px;width: 25px;height:250px;" id="deque" type="text" READONLY></textarea>
+      <input style="color:blue;float:right;font-family: 'Philosopher', arial, serif;font-size: 30px;width: 300px;height:60px;background:transparent;border:none;" id="output" type="text" READONLY>
+      <br/>
+      <input style="margin-left:58px;font-family: 'Reenie Beanie', arial, serif;font-size: 25px;width: 20px;height:20px;" id="bottom-input" type="text">
+      <br/>
+      <a id="push-bottom" style="font-size:12px;" href="#" data-icon="↑" class="button green shield" onclick="push('bottom');">Push</a>
+  		<a id="pop-bottom" style="font-size:12px;" href="#" data-icon="↓" class="button pink shield" onclick="pop('bottom');">Pop</a>
+      <h2 style="float:right;font-family: 'Philosopher', serif;font-size:30px;font-style:italic;text-shadow: 2px 2px 2px #aaa;" id="label"></h2>
+    </div>
+  </div>
+  
+  <br/>
+  <div id="container" class="instructions" style="display: none;">
+    
+    <div class="content" id="main_content">
+      <p>
+        <i>Inspired by a lesson on the nature of deques</i>
+      </p>
+      
+      <p class="small">
+        Instructions: <br/>
+        Output the requested stream of numbers in the order that they appear from left to right by using a deque to push and pop values. Values must be pushed into deque in numerical order.
+      </p>
+      
+      <p class="small">
+        For example, if the requested order is <b>1 4 3 2 5</b>, I would take the following steps to solve the problem: <br/>
+        <ol>
+          <li>Push <b>1</b> <i>(I have no other choice)</i></li>
+          <li>Pop <b>1</b> <i>(Since <b>1</b> is a number we want in the output <b>now</b>, let us pop it)</i></li>
+          <li>Push <b>2</b> <i>(I cannot push 4 because then next number after <b>1</b> is <b>2</b>)</i></li>
+          <li>Push <b>3</b></li>
+          <li>Push <b>4</b></li>
+          <li>Pop <b>4</b></li>
+          <li>Pop <b>3</b></li>
+          <li>Pop <b>2</b></li>
+          <li>Push <b>5</b></li>
+          <li>Pop <b>5</b></li>
+        </ol>
+      </p>
+      
+      <p>
+        <a href="http://dribbble.com/players/ivan">Theme</a>
+      </p>
+      
+    </div>
+    
+  </div>
+  
+  <a href="http://github.com/ivanvanderbyl/ui-progress-bar" id="fork_me" style="display:none;"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a> 
+  
+</body>
+</html>
