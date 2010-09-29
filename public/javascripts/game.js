@@ -18,7 +18,7 @@ var init = function ($) {
 var push = function(position) {
   if (nextInLine > digits) $('#label').text('Can\'t push anymore!');
   else {
-    var array = $('#deque').text().replace(/\n\n/g,'\n').split('\n');
+    var array = $('#deque').text().replace(/\s/g,'').split('');
     if (position == "top") {
       array.unshift(nextInLine);
       $('#deque').text(array.join('\n'));
