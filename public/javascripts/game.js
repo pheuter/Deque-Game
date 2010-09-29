@@ -50,7 +50,7 @@ var pop = function(position) {
   }
   
   if($('#output').text().replace(/\s/g,'') == $('#request').text().replace(/\s/g,'')) $('#label').text('You won!');
-  else if ($('#output').text().length == digits) $('#label').html('You lose, <a href="javascript:void(0);" onclick="restart();">restart</a>');
+  else if ($('#output').text().replace(/\s/g,'').length == digits) $('#label').html('You lose, <a href="javascript:void(0);" onclick="restart();">restart</a>');
 };
 
 var restart = function() {
