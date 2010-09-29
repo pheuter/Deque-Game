@@ -41,16 +41,16 @@ var pop = function(position) {
   if (position == "top") {
     var value = array.shift();
     $('#deque').text(array.join('\n'));
-    $('#output').text(output+value);
+    $('#output').text(output+value+' ');
   }
   else if (position == "bottom") {
     var value = array.pop();
     $('#deque').text(array.join('\n'));
-    $('#output').text(output+value);
+    $('#output').text(output+value+' ');
   }
   
   if($('#output').text().replace(/\s/g,'') == $('#request').text().replace(/\s/g,'')) $('#label').text('You won!');
-  else if ($('#output').text().length == digits) $('#label').text('You lose, <a href="javascript:void(0);" onclick="restart();">restart</a>');
+  else if ($('#output').text().length == digits) $('#label').html('You lose, <a href="javascript:void(0);" onclick="restart();">restart</a>');
 };
 
 var restart = function() {
