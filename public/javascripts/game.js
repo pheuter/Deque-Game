@@ -36,7 +36,7 @@ var push = function(position) {
 };
 
 var pop = function(position) {
-  var array = $('#deque').text().split('\n');
+  var array = $('#deque').text().replace(/\s/g,'').split('\n');
   var output = $('#output').text();
   if (position == "top") {
     var value = array.shift();
