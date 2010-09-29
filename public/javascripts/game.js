@@ -20,25 +20,19 @@ var push = function(position) {
   else {
     var array = $('#deque').text().split('\n');
     if (position == "top") {
-      var value = parseInt($('#top-input').attr('value'));
-      if (value == nextInLine) {
-        array.unshift(value);
-        $('#deque').text(array.join('\n'));
-        nextInLine += 1;
-      } else $('#label').text('You need to push a '+nextInLine);
+      array.unshift(nextInLine);
+      $('#deque').text(array.join('\n'));
+      nextInLine += 1;
       $('#top-input').attr('value','').focus();
     }
     else if (position == "bottom") {
       var value = parseInt($('#bottom-input').attr('value'));
-      if (value == nextInLine) {
-        array.push(value);
-        $('#deque').text(array.join('\n'));
-        nextInLine += 1;
-      } else $('#label').text('You need to push a '+nextInLine);
+      array.push(nextInLine);
+      $('#deque').text(array.join('\n'));
+      nextInLine += 1;
       $('#bottom-input').attr('value','').focus();
     }
   }
-  
 };
 
 var pop = function(position) {
