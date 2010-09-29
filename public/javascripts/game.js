@@ -49,8 +49,14 @@ var pop = function(position) {
     $('#output').text(output+value+' ');
   }
   
-  if($('#output').text().replace(/\s/g,'') == $('#request').text().replace(/\s/g,'')) $('#label').text('You won!');
-  else if ($('#output').text().replace(/\s/g,'').length == digits) $('#label').html('You lose, <a href="javascript:void(0);" onclick="restart();">restart</a>');
+  if($('#output').text().replace(/\s/g,'') == $('#request').text().replace(/\s/g,'')) $('#label').html('You won! <a href="javascript:void(0);" onclick="newgame();">New game</a>');
+  else if ($('#output').text().replace(/\s/g,'').length == digits) $('#label').html('<a href="javascript:void(0);" onclick="restart();">Retry</a>');
+};
+
+var newgame = function() {
+    pickArr = new Array();
+    init(jQuery);
+    restart();
 };
 
 var restart = function() {
