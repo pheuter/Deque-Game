@@ -37,17 +37,17 @@ var push = function(position) {
 
 var pop = function(position) {
   var array = $('#deque').text().split('\n');
-  var output = $('#output').attr('value');
+  var output = $('#output').text();
   if (position == "top") {
     var value = array.shift();
     $('#deque').text(array.join('\n'));
-    $('#output').attr('value',(output+value));
+    $('#output').text(output+value);
   }
   else if (position == "bottom") {
     var value = array.pop();
     $('#deque').text(array.join('\n'));
-    $('#output').attr('value',(output+value));
+    $('#output').text(output+value);
   }
   
-  if($('#output').attr('value').replace(/\s/g,'') == $('#request').text().replace(/\s/g,'')) $('#label').text('You won!');
+  if($('#output').text().replace(/\s/g,'') == $('#request').text().replace(/\s/g,'')) $('#label').text('You won!');
 };
