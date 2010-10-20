@@ -1,11 +1,14 @@
 require 'rubygems'
 require 'sinatra'
 require 'erb'
+require 'open-uri'
+require 'json'
 require 'couchrest'
 
 db = CouchRest.database!("http://deque:game@pheuter.couchone.com:5984/deque")
 
 get '/' do
+  @solved = JSON.parse(open("http://pheuter.couchone.com:5984/deque/_design/deque/_view/solved").read)
   erb :index
 end
 

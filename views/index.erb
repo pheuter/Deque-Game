@@ -88,7 +88,15 @@
    <div id="container" class="solved" style="display:none;">
      <div class="content" id="main_content">
        <h1 style="color:green;font-family: 'Philosopher', arial, serif;font-size:25px;" id="output">Solved so far:</h1>
-       <div id="solved"></div>
+       <div id="solved">
+         <table>
+           <tr>
+            <% @solved['rows'].collect{ |e| e['value']}.uniq.each do |s| %>
+            <td><%= s %></td>
+            <% end %>
+          </tr>
+        </table>
+       </div>
      </div>
    </div>
   
