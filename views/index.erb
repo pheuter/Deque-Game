@@ -13,7 +13,7 @@
   <link href='http://fonts.googleapis.com/css?family=Philosopher&subset=latin' rel='stylesheet' type='text/css'>
   <link  href="//fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&subset=latin" rel="stylesheet" type="text/css" >
   
-  <script src="http://code.jquery.com/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://code.jquery.com/jquery-1.4.3.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="javascripts/progress.js" type="text/javascript" charset="utf-8"></script>
   <script src="javascripts/game.js" type="text/javascript" charset="utf-8"></script>
 </head>
@@ -44,7 +44,7 @@
       <br/>
       <a id="push-bottom" style="font-size:12px;" href="#" data-icon="↑" class="button green shield" onclick="push('bottom');">Push</a>
       <a id="pop-bottom" style="font-size:12px;" href="#" data-icon="↓" class="button pink shield" onclick="pop('bottom');">Pop</a>
-      <h2 style="float:right;font-family: 'Philosopher', serif;font-size:30px;font-style:italic;text-shadow: 2px 2px 2px #aaa;" id="label"></h2>
+      <h2 style="float:right;font-family: 'Philosopher', serif;font-size:20px;font-style:italic;text-shadow: 2px 2px 2px #aaa;" id="label"></h2>
     </div>
   </div>
   
@@ -84,6 +84,13 @@
     </div>
     
   </div>
+  <br/>
+   <div id="container" class="solved" style="display:none;">
+     <div class="content" id="main_content">
+       <h1 style="color:green;font-family: 'Philosopher', arial, serif;font-size:25px;" id="output">Solved so far:</h1>
+       <div id="solved"></div>
+     </div>
+   </div>
   
   <a href="http://github.com/pheuter/Deque-Game" id="fork_me" style="display:none;"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a> 
   

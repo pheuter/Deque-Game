@@ -49,8 +49,16 @@ var pop = function(position) {
     $('#output').text(output+value+' ');
   }
   
-  if($('#output').text().replace(/\s/g,'') == $('#request').text().replace(/\s/g,'')) $('#label').html('You won! <a href="javascript:void(0);" onclick="newgame();">New game</a>');
-  else if ($('#output').text().replace(/\s/g,'').length == digits) $('#label').html('<a href="javascript:void(0);" onclick="restart();">Retry</a>');
+  if($('#output').text().replace(/\s/g,'') == $('#request').text().replace(/\s/g,'')) { // If a result was found
+    $.ajax({
+			type: "POST",
+			url: "/submit",
+			data:"possible=1&result="+$('#request').text().replace(/\s/g,''),
+			success: function() { $('#label').html('Submitted result! <a href="javascript:void(0);" onclick="newgame();">New game</a>'); }
+		});
+  }
+  else if ($('#output').text().replace(/\s/g,'').length == digits)
+    $('#label').html('<a href="javascript:void(0);" onclick="restart();">Retry</a> | <a href="javascript:void(0);" onclick="impossible();">Impossible</a>');
 };
 
 var newgame = function() {
@@ -65,3 +73,22 @@ var restart = function() {
     $('#deque').text('');
     $('#label').text('');
 };
+
+var impossible = function() {
+  $.ajax({
+		type: "POST",
+		url: "/check",
+		data:"query="+$('#request').text().replace(/\s/g,''),
+		success: function(r) { 
+		  if (parseInt(r) == 1) $('#label').html('Problem has already been solved! <a href="javascript:void(0);" onclick="newgame();">New game</a>');
+		  else {
+		    $.ajax({
+    			type: "POST",
+    			url: "/submit",
+    			data:"possible=0&result="+$('#output').text().replace(/\s/g,''),
+    			success: function() { $('#label').html('Submitted impossible case! <a href="javascript:void(0);" onclick="newgame();">New game</a>'); }
+    		});
+		  }
+		}
+	});
+}

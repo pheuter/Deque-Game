@@ -72,18 +72,17 @@ $(function() {
   $('#progress_bar .ui-progress').css('width', '7%');
 
   setDigits(prompt("Amount of digits",5));
-  $('#progress_bar .ui-progress').animateProgress(56, function() {
+  $('#progress_bar .ui-progress').animateProgress(99, function() {
     init(jQuery); // begin game
-    $(this).animateProgress(90, function() {
-      setTimeout(function() {
-        $('#progress_bar .ui-progress').animateProgress(100, function() {
-          $('.instructions').slideDown();
-          $('#game').slideDown();
-          $('#fork_me').fadeIn();
-          $('#progress_bar').fadeOut();
-        });
-      }, 100);
+    $.getJSON("http://pheuter.couchone.com:5984/deque/_design/deque/_view/solved?callback=?", function(data) {
+      $.each(data.rows, function(i) { $('<p>'+i.value+'</p>').appendTo('#solved'); });
+    });
+    $('#progress_bar .ui-progress').animateProgress(100, function() {
+      $('.instructions').slideDown();
+      $('.solved').slideDown();
+      $('#game').slideDown();
+      $('#fork_me').fadeIn();
+      $('#progress_bar').fadeOut();
     });
   });
-  
 });
