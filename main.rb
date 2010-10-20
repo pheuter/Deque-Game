@@ -8,7 +8,13 @@ require 'couchrest'
 db = CouchRest.database!("http://deque:game@pheuter.couchone.com:5984/deque")
 
 get '/' do
-  @solved = JSON.parse(open("http://pheuter.couchone.com:5984/deque/_design/deque/_view/solved").read)
+  @solved, @unsolved = [], []
+  JSON.parse(open("http://pheuter.couchone.com:5984/deque/_design/deque/_view/results").read)['rows'].each do |row|
+    if row['key'] then @solved << row['value'] else @unsolved << row['value'] end
+  end
+  @unsolved = @unsolved.find_all { |e| !@solved.include?(e) }
+  @solved.uniq!
+  @unsolved.uniq!
   erb :index
 end
 

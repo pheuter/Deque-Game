@@ -87,16 +87,42 @@
   <br/>
    <div id="container" class="solved" style="display:none;">
      <div class="content" id="main_content">
-       <h1 style="color:green;font-family: 'Philosopher', arial, serif;font-size:25px;" id="output">Solved so far:</h1>
-       <div id="solved">
-         <table>
-           <tr>
-            <% @solved['rows'].collect{ |e| e['value']}.uniq.each do |s| %>
-            <td><%= s %></td>
-            <% end %>
-          </tr>
-        </table>
-       </div>
+       <table width="368" border="0" cellspacing="0" cellpadding="2" align="center" height="100">
+               <tr valign="middle"> 
+                 <td bgcolor="#000066" width="120" height="20"> 
+                   <div align="center"><font color="#FFFFFF"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2">Solved</font></b></font> </div>
+                 </td>
+                 <td width="4" height="20"></td>
+                 <td bgcolor="#990000" width="120" height="20"> 
+                   <div align="center"><font color="#FFFFFF"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2">Not solved</font></b></font></div>
+                 </td>
+               </tr>
+               <tr valign="top"> 
+                 <td bgcolor="#000066" width="120"> 
+                   <table width="100%" border="0" cellspacing="0" cellpadding="3" height="80">
+                     <tr bgcolor="#FFFFFF" valign="top"> 
+                       <td> 
+                         <p><font face="Verdana, Arial, Helvetica, sans-serif" size="1">
+                           <%= @solved.join(', ') %>
+                           </font></p>
+                       </td>
+                     </tr>
+                   </table>
+                 </td>
+                 <td width="4"></td>
+                 <td bgcolor="#990000" width="120"> 
+                   <table width="100%" border="0" cellspacing="0" cellpadding="3" height="80">
+                     <tr bgcolor="#FFFFFF" valign="top"> 
+                       <td> 
+                         <p><font face="Verdana, Arial, Helvetica, sans-serif" size="1">
+                           <%= @unsolved.join(', ') %>
+                           </font></p>
+                       </td>
+                     </tr>
+                   </table>
+                 </td>
+               </tr>
+             </table>
      </div>
    </div>
   
